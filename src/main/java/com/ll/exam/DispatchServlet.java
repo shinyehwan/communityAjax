@@ -1,13 +1,8 @@
 package com.ll.exam;
 
-import java.io.IOException;
-import java.lang.reflect.Member;
-import java.util.Map;
-
 import com.ll.exam.article.ArticleController;
 import com.ll.exam.member.MemberController;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,6 +34,9 @@ public class DispatchServlet extends HttpServlet {
 						break;
 					case "/usr/member/login":
 						memberController.showLogin(rq);
+						break;
+					case "/usr/article/getArticles":
+						articleController.getArticles(rq);
 						break;
 				}
 				break;

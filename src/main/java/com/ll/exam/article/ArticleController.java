@@ -5,6 +5,8 @@ import java.util.List;
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
 
+import util.Ut;
+
 public class ArticleController {
 	private ArticleService articleService;
 
@@ -15,6 +17,15 @@ public class ArticleController {
 		List<ArticleDto> articleDtos = articleService.findAll();
 		rq.setAttr("articles", articleDtos);
 		rq.view("usr/article/list");
+	}
+
+	public void getArticles(Rq rq) {
+		List<ArticleDto> articleDtos = articleService.findAll();
+		String jsonStr = Ut.json.toStr(articleDtos, "");
+
+		rq.println(jsonStr);
+		// rq.setAttr("articles", articleDtos);
+		// rq.view("usr/article/list");
 	}
 
 	public void showWrite(Rq rq) {
