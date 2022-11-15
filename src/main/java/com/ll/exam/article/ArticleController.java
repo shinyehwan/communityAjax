@@ -3,6 +3,7 @@ package com.ll.exam.article;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
@@ -23,11 +24,8 @@ public class ArticleController {
 
 	public void getArticles(Rq rq) {
 		List<ArticleDto> articleDtos = articleService.findAll();
-		HashMap<String, Object> resultData = new LinkedHashMap<String, Object>();
+		Map<String, Object> resultData = Ut.mapOf("resultCode", "S-1", "msg", "성공", "data", articleDtos);
 
-		resultData.put("resultCode", "S-1");
-		resultData.put("msg", "성공");
-		resultData.put("data", articleDtos);
 		rq.json(resultData);
 
 	}

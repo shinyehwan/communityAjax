@@ -2,6 +2,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,14 @@ import com.ll.exam.article.dto.ArticleDto;
 import util.Ut;
 
 public class AppTest {
+	@Test
+	void mapOf() {
+		Map<String, Object> map = Ut.mapOf("신예환", 27, "정효조", 25);
+
+		assertThat(map.get("신예환")).isEqualTo(27);
+		assertThat(map.get("정효조")).isEqualTo(25);
+
+	}
 	@Test
 	void assertJ_assertThat() {
 		int rs = 10 + 20;
