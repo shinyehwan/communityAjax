@@ -22,9 +22,9 @@ public class Ut {
 			}
 		}
 
-		public static Object toObj(String json, Class cls, Object defaultValue) {
+		public static <T> T toObj(String json, Class<T> cls, T defaultValue) {
 			try {
-				return om.readValue(json, cls);
+				return (T)om.readValue(json, cls);
 			} catch (JsonProcessingException e) {
 				return defaultValue;
 			}
