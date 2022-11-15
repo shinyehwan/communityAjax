@@ -1,5 +1,7 @@
 package com.ll.exam.article;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.ll.exam.Rq;
@@ -21,7 +23,13 @@ public class ArticleController {
 
 	public void getArticles(Rq rq) {
 		List<ArticleDto> articleDtos = articleService.findAll();
-		rq.json(articleDtos);
+		HashMap<String, Object> resultData = new LinkedHashMap<String, Object>();
+
+		resultData.put("resultCode", "S-1");
+		resultData.put("msg", "성공");
+		resultData.put("data", articleDtos);
+		rq.json(resultData);
+
 	}
 
 	public void showWrite(Rq rq) {

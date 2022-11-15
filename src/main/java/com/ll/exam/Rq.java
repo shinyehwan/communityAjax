@@ -152,7 +152,7 @@ public class Rq {
                  """.formatted(msg));
 	}
 
-	public void json(Object data) {
+	public void  json(Object data) {
 		resp.setContentType("application/json; charset=utf-8");
 		String jsonStr = Ut.json.toStr(data, "");
 
