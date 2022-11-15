@@ -21,11 +21,7 @@ public class ArticleController {
 
 	public void getArticles(Rq rq) {
 		List<ArticleDto> articleDtos = articleService.findAll();
-		String jsonStr = Ut.json.toStr(articleDtos, "");
-
-		rq.println(jsonStr);
-		// rq.setAttr("articles", articleDtos);
-		// rq.view("usr/article/list");
+		rq.json(articleDtos);
 	}
 
 	public void showWrite(Rq rq) {
