@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ll.exam.ResultData;
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
 
@@ -24,7 +25,8 @@ public class ArticleController {
 
 	public void getArticles(Rq rq) {
 		List<ArticleDto> articleDtos = articleService.findAll();
-		Map<String, Object> resultData = Ut.mapOf("resultCode", "S-1", "msg", "성공", "data", articleDtos);
+
+		ResultData<List<ArticleDto>> resultData = new ResultData("S-1", "성공", articleDtos);
 
 		rq.json(resultData);
 
