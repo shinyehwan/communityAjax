@@ -22,6 +22,9 @@ public class ArticleController {
 		rq.setAttr("articles", articleDtos);
 		rq.view("usr/article/list");
 	}
+	public void showListAuto(Rq rq) {
+		rq.view("usr/article/listAuto");
+	}
 
 	public void getArticles(Rq rq) {
 		long fromId = rq.getLongParam("fromId", -1);
@@ -132,4 +135,6 @@ public class ArticleController {
 		rq.replace("/usr/article/detail/free/%d".formatted(id), "%d번 게시물이 수정되었습니다.".formatted(id));
 
 	}
+
+
 }
