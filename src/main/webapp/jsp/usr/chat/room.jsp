@@ -48,6 +48,7 @@
                 작성
             </button>
         </form>
+        ${messages}
     </div>
 </section>
 
