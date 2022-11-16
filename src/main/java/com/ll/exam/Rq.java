@@ -29,6 +29,20 @@ public class Rq {
 		resp.setContentType("text/html; charset=utf-8"); // 브라우저에게 우리가 만든 결과물이 UTF-8 이다 라고 알리는 의미
 	}
 
+	public long getLongParam(String paramName, long defaultValue) {
+		String value = req.getParameter(paramName);
+
+		if (value == null) {
+			return defaultValue;
+		}
+
+		try {
+			return Long.parseLong(value);
+		} catch (NumberFormatException e) {
+			return defaultValue;
+		}
+	}
+
 	public int getIntParam(String paramName, int defaultValue) {
 		String value = req.getParameter(paramName);
 
@@ -169,4 +183,6 @@ public class Rq {
 	public void failJson(Object data) {
 		json("F-1", "실패", data);
 	}
+
+
 }
