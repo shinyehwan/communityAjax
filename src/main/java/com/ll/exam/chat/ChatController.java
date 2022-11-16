@@ -13,7 +13,7 @@ public class ChatController {
 		chatService = new ChatService();
 	}
 
-	public void createRoom(Rq rq) {
+	public void showCreateRoom(Rq rq) {
 		rq.view("/usr/chat/createRoom");
 	}
 
@@ -40,5 +40,58 @@ public class ChatController {
 		List<ChatRoomDto> chatRoomDtos = chatService.findAllRooms();
 		rq.setAttr("rooms", chatRoomDtos);
 		rq.view("usr/chat/roomList");
+	}
+
+	public void showModifyRoom(Rq rq) {
+		long id = rq.getLongPathValueByIndex(0, -1);
+
+		if ( id == -1 ) {
+			rq.historyBack("번호를 입력해주세요.");
+			return;
+		}
+
+		ChatRoomDto chatRoom = chatService.findRoomById(id);
+
+		if ( chatRoom == null ) {
+			rq.historyBack("존재하지 않는 채팅방 입니다.");
+			return;
+		}
+
+		rq.setAttr("room", chatRoom);
+		rq.view("usr/chat/modifyRoom");
+	}
+
+	public void doModifyRoom(Rq rq) {
+		long id = rq.getLongPathValueByIndex(0, -1);
+
+		if ( id == -1 ) {
+			rq.historyBack("번호를 입력해주세요.");
+			return;
+		}
+
+		String title = rq.getParam("title", "");
+
+		if ( title.length() == 0 ) {
+			rq.historyBack("제목을 입력해주세요.");
+			return;
+		}
+
+		String body = rq.getParam("body", "");
+
+		if ( body.length() == 0 ) {
+			rq.historyBack("내용을 입력해주세요.");
+			return;
+		}
+
+		ChatRoomDto chatRoom = chatService.findRoomById(id);
+
+		if ( chatRoom == null ) {
+			rq.historyBack("존재하지 않는 채팅방 입니다.");
+			return;
+		}
+
+		chatService.modifyRoom(id, title, body);
+
+		rq.replace("/usr/chat/room/%d".formatted(id), "%d번 채팅방이 수정되었습니다.".formatted(id));
 	}
 }

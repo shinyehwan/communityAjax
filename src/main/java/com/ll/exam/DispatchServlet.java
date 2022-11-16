@@ -23,7 +23,10 @@ public class DispatchServlet extends HttpServlet {
 			case "GET":
 				switch (rq.getActionPath()) {
 					case "/usr/chat/createRoom":
-						chatController.createRoom(rq);
+						chatController.showCreateRoom(rq);
+						break;
+					case "/usr/chat/modifyRoom":
+						chatController.showModifyRoom(rq);
 						break;
 					case "/usr/chat/roomList":
 						chatController.showRoomList(rq);
@@ -55,6 +58,9 @@ public class DispatchServlet extends HttpServlet {
 				switch (rq.getActionPath()) {
 					case "/usr/chat/createRoom":
 						chatController.doCreateRoom(rq);
+						break;
+					case "/usr/chat/modifyRoom":
+						chatController.doModifyRoom(rq);
 						break;
 					case "/usr/article/write":
 						articleController.doWrite(rq);
