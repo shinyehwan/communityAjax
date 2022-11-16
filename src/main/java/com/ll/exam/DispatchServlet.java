@@ -1,6 +1,7 @@
 package com.ll.exam;
 
 import com.ll.exam.article.ArticleController;
+import com.ll.exam.chat.ChatController;
 import com.ll.exam.member.MemberController;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -16,10 +17,14 @@ public class DispatchServlet extends HttpServlet {
 
 		MemberController memberController = new MemberController();
 		ArticleController articleController = new ArticleController();
+		ChatController chatController = new ChatController();
 
 		switch (rq.getMethod()) {
 			case "GET":
 				switch (rq.getActionPath()) {
+					case "/usr/chat/createRoom":
+						chatController.createRoom(rq);
+						break;
 					case "/usr/article/modify":
 						articleController.showModify(rq);
 						break;
