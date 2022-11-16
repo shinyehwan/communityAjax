@@ -25,5 +25,9 @@ public class ChatService {
 	public void modifyRoom(long id, String title, String body) {
 		chatRoomRepository.modify(id, title, body);
 	}
+
+	public void deleteRoom(long id) {
+		chatRoomRepository.deleteRoom(id);
+	}
 }
 
