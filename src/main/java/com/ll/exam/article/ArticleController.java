@@ -26,9 +26,8 @@ public class ArticleController {
 	public void getArticles(Rq rq) {
 		List<ArticleDto> articleDtos = articleService.findAll();
 
-		ResultData<List<ArticleDto>> resultData = new ResultData("S-1", "성공", articleDtos);
-
-		rq.json(resultData);
+		// ResultData<List<ArticleDto>> resultData = new ResultData("S-1", "성공", articleDtos);
+		rq.successJson(articleDtos);
 
 	}
 

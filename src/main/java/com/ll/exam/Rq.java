@@ -152,10 +152,21 @@ public class Rq {
                  """.formatted(msg));
 	}
 
-	public void  json(Object data) {
+	public void  json(Object resultData) {
 		resp.setContentType("application/json; charset=utf-8");
-		String jsonStr = Ut.json.toStr(data, "");
+		String jsonStr = Ut.json.toStr(resultData, "");
 
 		println(jsonStr);
+	}
+
+	public void json(String resultCode, String msg, Object data) {
+		json(new ResultData(resultCode, msg, data));
+	}
+
+	public void successJson(Object data) {
+		json("S-1", "성공", data);
+	}
+	public void failJson(Object data) {
+		json("F-1", "실패", data);
 	}
 }
