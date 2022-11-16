@@ -9,15 +9,15 @@
 
         <ul class="mt-5">
             <c:forEach items="${rooms}" var="room">
-                <li class="flex gap-2">
-                    <a class="w-[40px] hover:underline hover:text-[red]" href="/usr/chat/room/${room.id}">${room.id}</a>
-                    <a class="hover:underline hover:text-[red] mr-auto" href="/usr/chat/room/${room.id}">
-                            ${room.title}
-                        #${room.body}
-                    </a>
-                    <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/deleteRoom/${room.id}?_method=DELETE">삭제</a>
-                    <a class="hover:underline hover:text-[red]" href="/usr/chat/modifyRoom/${room.id}">수정</a>
-                </li>
+            <li class="flex gap-2">
+                <a class="w-[40px] hover:underline hover:text-[red]" href="/usr/chat/room/${room.id}">${room.id}</a>
+                <a class="hover:underline hover:text-[red] mr-auto" href="/usr/chat/room/${room.id}">
+                    ${room.title}
+                    #${room.body}
+                </a>
+                <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/chat/deleteRoom/${room.id}?_method=DELETE">삭제</a>
+                <a class="hover:underline hover:text-[red]" href="/usr/chat/modifyRoom/${room.id}">수정</a>
+            </li>
             </c:forEach>
         </ul>
     </div>
