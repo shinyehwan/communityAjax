@@ -18,18 +18,7 @@
 -->
 
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-<h3 align="center">Spring Legacy Project - articleList(AJAX 새로운 게시글 불러오기)</h3>
 
-  <p align="center">
-    Spring Legacy Project - articleList(AJAX 새로운 게시글 불러오기)
-    <br />
-    <a href="https://github.com/kimdonghyeon3/ajax_test"><strong>View Demo »</strong></a>
-    <br />
-    <br />
-
-  </p>
 </div>
 
 <hr/>
